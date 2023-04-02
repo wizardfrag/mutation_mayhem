@@ -5,8 +5,9 @@ use bevy::prelude::*;
 use bevy::window::PrimaryWindow;
 use bevy::winit::WinitWindows;
 use bevy::DefaultPlugins;
-use bevy_game::GamePlugin;
+use mutation_mayhem::GamePlugin;
 use std::io::Cursor;
+use bevy_ecs_ldtk::prelude::*;
 use winit::window::Icon;
 
 fn main() {
@@ -15,7 +16,7 @@ fn main() {
         .insert_resource(ClearColor(Color::rgb(0.4, 0.4, 0.4)))
         .add_plugins(DefaultPlugins.set(WindowPlugin {
             primary_window: Some(Window {
-                title: "Bevy game".to_string(), // ToDo
+                title: "Mutation Mayhem".to_string(), // ToDo
                 resolution: (800., 600.).into(),
                 canvas: Some("#bevy".to_owned()),
                 ..default()

@@ -1,6 +1,7 @@
 use crate::GameState;
 use bevy::prelude::*;
 use bevy_asset_loader::prelude::*;
+use bevy_ecs_ldtk::{LdtkAsset, LdtkLevel};
 use bevy_kira_audio::AudioSource;
 
 pub struct LoadingPlugin;
@@ -13,9 +14,10 @@ impl Plugin for LoadingPlugin {
         app.add_loading_state(
             LoadingState::new(GameState::Loading).continue_to_state(GameState::Menu),
         )
-        .add_collection_to_loading_state::<_, FontAssets>(GameState::Loading)
-        .add_collection_to_loading_state::<_, AudioAssets>(GameState::Loading)
-        .add_collection_to_loading_state::<_, TextureAssets>(GameState::Loading);
+            .add_collection_to_loading_state::<_, FontAssets>(GameState::Loading)
+            .add_collection_to_loading_state::<_, AudioAssets>(GameState::Loading)
+            .add_collection_to_loading_state::<_, TextureAssets>(GameState::Loading)
+            .add_collection_to_loading_state::<_, LevelAssets>(GameState::Loading);
     }
 }
 
@@ -38,4 +40,10 @@ pub struct AudioAssets {
 pub struct TextureAssets {
     #[asset(path = "textures/bevy.png")]
     pub texture_bevy: Handle<Image>,
+}
+
+#[derive(AssetCollection, Resource)]
+pub struct LevelAssets {
+    #[asset(path = "levels/testlevel.ldtk")]
+    pub testlevel: Handle<LdtkAsset>,
 }

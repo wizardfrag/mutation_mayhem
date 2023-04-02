@@ -2,6 +2,7 @@ use crate::actions::Actions;
 use crate::loading::TextureAssets;
 use crate::GameState;
 use bevy::prelude::*;
+use bevy_ecs_ldtk::LdtkWorldBundle;
 
 pub struct PlayerPlugin;
 
@@ -13,6 +14,7 @@ pub struct Player;
 impl Plugin for PlayerPlugin {
     fn build(&self, app: &mut App) {
         app.add_system(spawn_player.in_schedule(OnEnter(GameState::Playing)))
+            .add_startup_system(setup_levels)
             .add_system(move_player.in_set(OnUpdate(GameState::Playing)));
     }
 }
