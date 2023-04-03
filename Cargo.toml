@@ -6,6 +6,9 @@ authors = ["David White", "Nick Keers"]
 edition = "2021"
 exclude = ["dist", "build", "assets", "credits"]
 
+[registries.crates-io]
+protocol = "sparse"
+
 [profile.dev.package."*"]
 opt-level = 3
 
@@ -38,6 +41,7 @@ rand = { version = "0.8.3" }
 winit = { version = "0.28", default-features = false }
 image = { version = "0.24", default-features = false }
 bevy_ecs_ldtk = "0.6.0"
+bevy-inspector-egui = "0.18.3"
 
 [build-dependencies]
 embed-resource = "1.4"
